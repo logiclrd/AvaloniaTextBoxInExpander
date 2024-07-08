@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:TestTextBoxInExpander"
+        x:Class="TestTextBoxInExpander.InterceptAtTextBoxWithBehaviour"
+        Title="Intercept space key events at the TextBox using an attached Behavior">
+    <Window.Styles>
+        <Style Selector="TextBox.InterceptSpaces">
+            <Setter Property="(Interaction.Behaviors)">
+                <BehaviorCollectionTemplate>
+                    <BehaviorCollection>
+                        <local:TextBoxSpaceInputFromKeyDownBehaviour />
+                    </BehaviorCollection>
+                </BehaviorCollectionTemplate>
+            </Setter>
+        </Style>
+    </Window.Styles>
+
+    <Expander>
+        <Expander.Header>
+            <TextBox Classes="InterceptSpaces" Name="txtInsideHeader" />
+        </Expander.Header>
+        Welcome to Avalonia!
+    </Expander>
+</Window>

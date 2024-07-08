@@ -1,50 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="using:TestTextBoxInExpander"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="TestTextBoxInExpander.MainWindow"
-        Title="TestTextBoxInExpander">
-    <Window.Styles>
-        <Style Selector="Expander">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <DockPanel MinWidth="{TemplateBinding MinWidth}"
-                            MaxWidth="{TemplateBinding MaxWidth}">
-                    <!-- The default template uses <ToggleButton> here, which intercepts space key presses and turns them into clicks. -->
-                    <local:NoSpaceToggleButton x:Name="ExpanderHeader"
-                                    MinHeight="{TemplateBinding MinHeight}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    IsEnabled="{TemplateBinding IsEnabled}"
-                                    Content="{TemplateBinding Header}"
-                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                    IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}" />
-                    <Border x:Name="ExpanderContent"
-                            IsVisible="{TemplateBinding IsExpanded, Mode=TwoWay}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            MinHeight="{TemplateBinding MinHeight}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Padding="{TemplateBinding Padding}">
-                        <ContentPresenter x:Name="PART_ContentPresenter"
-                                        Content="{TemplateBinding Content}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                    </Border>
-                    </DockPanel>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-    </Window.Styles>
-    <Expander>
-        <Expander.Header>
-            <TextBox />
-        </Expander.Header>
-        Welcome to Avalonia!
-    </Expander>
+        x:Class="TestTextBoxInExpander.MainWindow">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Name="cmdExpanderTemplate" Click="cmdExpanderTemplate_Click">Replace Expander template</Button>
+        <Button Name="cmdInterceptAtTextBox" Click="cmdInterceptAtTextBox_Click">Intercept Space at the TextBox</Button>
+        <Button Name="cmdInterceptAtTextBoxWithBehaviour" Click="cmdInterceptAtTextBoxWithBehaviour_Click">Intercept Space at the TextBox with Behaviour</Button>
+    </StackPanel>
 </Window>
